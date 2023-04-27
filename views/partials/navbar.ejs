@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="/stylesheets/nav.css" />
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h3>Tripify</h3>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/hotel">All Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/hotel/new">New Hotel</a>
+        </li>
+      </ul>
+      <div class="navbar-nav">
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/register">Register</a>
+        <% } else {%>
+        <div class="dropdown">
+          <button class="dropbtn d-flex justify-content-between">
+            <i class="fas fa-user-circle me-2" style="font-size: 32px"></i>
+            <i class="fas fa-caret-down ms-1" style="font-size: 26px"></i>
+          </button>
+          <div class="dropdown-content">
+            <div class="d-flex align-items-center py-2 px-1 drop-item">
+              <i class="fa-brands fa-github ms-1" style="font-size: 30px"></i>
+              <a class="ms-3 h4 mt-1 text-decoration-none" href='https://github.com/<%= currentUser.github %>' target="_blank"><%= currentUser.username %></a>
+            </div>
+            <div class="d-flex justify-content-center px-2">
+              <div
+                style="height: 1px; background-color: lightgray"
+                class="w-100"
+              ></div>
+            </div>
+            <div class="drop-item">
+              <a href="/shop" class="h5 text-primary">Points : </a>
+              <% if(currentUser.points>0) {%>
+              <a href="/shop" class="h5 text-success"
+                ><%= currentUser.points %></a
+              >
+              <% } else {%>
+              <a href="/shop" class="h5 text-danger"
+                ><%= currentUser.points %></a
+              >
+              <% } %>
+              <img
+                src="/assets/coin.png"
+                alt=""
+                width="26px"
+                height="26px"
+                class="mb-1"
+              />
+            </div>
+            <div class="d-flex justify-content-center px-2">
+              <div
+                style="height: 1px; background-color: lightgray"
+                class="w-100"
+              ></div>
+            </div>
+            <div class="drop-item">
+              <a href="/logout" class="text-danger h5">Logout</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-xl-5 offset-xl-4">
+      <div class="card shadow">
+        <img
+          src="https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          <form action="/login" method="POST" class="validated-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input
+                class="form-control"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                autofocus
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <!-- Increase buttoi font -->
+            <div class="pt-1 mb-4 d-flex justify-content-center">
+              <button class="btn btn-success btn-lg btn-block text-white w-100">
+                Login
+              </button>
+            </div>
+          </form>
+          <div class="d-flex align-items-center justify-content-center pb-4">
+            <p class="mb-0 me-2">Don't have an account?</p>
+            <a href="/register">
+              <button type="button" class="btn btn-outline-primary">
+                Register
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

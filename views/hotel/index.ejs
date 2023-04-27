@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate.ejs') %>
+<div class="shadow-md">
+  <div id="cluster-map" class="mb-3"></div>
+</div>
+<div class="d-flex justify-content-end my-3 ">
+  <form action="/hotel" method="get">
+    <div class="input-group">
+      <input
+        type="text"
+        name="search"
+        class="form-control-lg"
+        placeholder="Search for hotels"
+        aria-label="Search for hotels"
+        aria-describedby="button-addon2"
+      />
+      <button class="btn btn-outline-success" type="submit" id="button-addon2">
+        <i class="fa fa-search" aria-hidden="true" style="font-size: 22px;"></i>
+        <span class="h4">Search</span>
+      </button>
+    </div>
+  </form>
+</div>
+<% if(nomatch !== null) {%>
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">No Match Found!</h4>
+  <p>Sorry, we couldn't find any hotels matching your search.</p>
+  <hr />
+  <p class="mb-0">Please try again with some different keywords.</p>
+</div>
+<% } else {%>
+<div class="card-header mb-4">
+  <div class="h1 text-center">All Hotels</div>
+</div>
+<% for (let hotel of hotels){%>
+<div class="card mb-3 shadow-lg rounded-3">
+  <div class="row">
+    <div class="col-md-4">
+      <%if(hotel.images.length) {%>
+      <img class="img-fluid rounded-3" alt="" src="<%=hotel.images[0].url%>" />
+      <% }else {%>
+      <img
+        class="img-fluid rounded-3"
+        alt=""
+        src="https://res.cloudinary.com/dnbvjlyo7/image/upload/v1681488950/YelpCamp/unsplash_lm52nl.jpg"
+      />
+      <% } %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title h3"><%= hotel.title %></h5>
+
+        <p class="card-text fs-5"><%= hotel.description %></p>
+        <p class="card-text h5">
+          <small class="text-muted"><%= hotel.location%></small>
+        </p>
+        <a
+          class="btn btn-primary mt-2 fs-5 fw-bolder"
+          href="/hotel/<%=hotel._id%>"
+          >View <%=hotel.title%></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<% }%> <% } %>
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
+  const hotels = {features: <%-JSON.stringify(hotels) %> };
+</script>
+<script src="/javascripts/clusterMap.js"></script>
