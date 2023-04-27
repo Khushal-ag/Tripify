@@ -4,7 +4,13 @@
 
 <!-- logo/title -->
 
-# Tripify
+<br>
+<picture>
+  <source media="(prefers-color-scheme: dark, (width:600px))" srcset="./public/assets/triphive.png">
+  <source media="(prefers-color-scheme: light,(width:600px))" srcset="./public/assets/triphive-black.png">
+  <img src="./public/assets/triphive.png" width="600px" alt="triphive">
+</picture>
+<br>
 
 ### 🏨A hotel review website that allows users to find hotels and leave reviews📝 for them.
 ### 🔁In return user get rewarded 🪙 for their valuable reviews✅.
